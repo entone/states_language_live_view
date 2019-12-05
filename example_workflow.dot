@@ -1,0 +1,19 @@
+digraph my_graph {
+  node0 [label="Welcome", shape=box];
+  node1 [label="ShowError", shape=box];
+  node2 [label="ShowAccount", shape=box];
+  node3 [label="PhoneNumberLookup", shape=box];
+  node4 [label="DoLookup", shape=box];
+  node5 [label="AccountLookupChoice", shape=box];
+  node6 [label="AccountIDLookup", shape=box];
+  node6 -> node4 [label=":do_lookup"];
+  node5 -> node3 [label=":phone_lookup"];
+  node5 -> node6 [label=":account_id_lookup"];
+  node4 -> node2 [label=":success"];
+  node4 -> node1 [label=":account_not_found"];
+  node4 -> node1 [label=":internal_error"];
+  node3 -> node4 [label=":do_lookup"];
+  node1 -> node5 [label=":ok"];
+  node0 -> node5 [label=":transition"];
+}
+

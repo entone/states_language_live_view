@@ -1,0 +1,61 @@
+{
+  "Comment": "This is an example workflow",
+  "StartAt": "Welcome",
+  "States": {
+    "Welcome": {
+      "Type": "Task",
+      "Resource": "Welcome",
+      "Next": "AccountLookupChoice"
+    },
+    "AccountLookupChoice": {
+      "Type": "Choice",
+      "Resource": "AccountLookupChoice",
+      "Choices": [
+        {
+          "Next": "PhoneNumberLookup",
+          "StringEquals": ":phone_lookup"
+        },
+        {
+          "Next": "AccountIDLookup",
+          "StringEquals": ":account_id_lookup"
+        }
+      ]
+    },
+    "PhoneNumberLookup": {
+      "Type": "Task",
+      "Resource": "PhoneNumberLookup",
+      "TransitionEvent": ":do_lookup",
+      "Next": "DoLookup"
+    },
+    "AccountIDLookup": {
+      "Type": "Task",
+      "Resource": "AccountIDLookup",
+      "TransitionEvent": ":do_lookup",
+      "Next": "DoLookup"
+    },
+    "DoLookup": {
+      "Type": "Task",
+      "Resource": "DoLookup",
+      "TransitionEvent": ":success",
+      "Next": "ShowAccount",
+      "Catch": [
+        {
+          "ErrorEquals": [":account_not_found", ":internal_error"],
+          "Next": "ShowError"
+        }
+      ]
+    },
+    "ShowError": {
+      "Type": "Task",
+      "Resource": "ShowError",
+      "TransitionEvent": ":ok",
+      "Next": "AccountLookupChoice"
+    },
+    "ShowAccount": {
+      "Type": "Task",
+      "Resource": "ShowAccount",
+      "End": true
+    }
+  }
+}
+
