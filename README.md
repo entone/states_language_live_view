@@ -2,7 +2,7 @@
 
 This is a simple example of utilizing the [StatesLanguage](https://github.com/citybaseinc/states_language) library with LiveView for a multi-step form.
 
-## About
+## Creating visual representation
 
 I've generated a `example_workflow.dot` file and `example_workflow.png` using the following commands.
 
@@ -15,11 +15,15 @@ and the resulting png
 
 ![Example Workflow](example_workflow.png)
 
+## About
+
 I'm not going to go over how to setup LiveView, their [docs](https://hexdocs.pm/phoenix_live_view/Phoenix.LiveView.html<Paste>) do a great job of that.
 
 To get a better understanding of how this is implemented the relevant files to review are [example_workflow.json](priv/state_machines/example_workflow.json), [views/workflow.json](lib/states_language_live_view_web/views/workflow.ex) and [workflows/example_workflow.ex](lib/states_language_live_view/workflows/example_workflow.ex). 
 
 I've tried to provide some decent documentation to explain what's going on in the files listed above.
+
+## Follow-up
 
 If you have any questions feel free to ask in the [ElixirForum](https://elixirforum.com/t/stateslanguage-declaratively-design-state-machines-that-compile-to-elixir-based-gen-statem-processes-with-the-states-language-json-specification/27324/7) thread, or open an issue in this repo or the [StatesLanguage](https://github.com/citybaseinc/states_language) repo.
 
