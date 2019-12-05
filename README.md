@@ -21,7 +21,7 @@ I'm not going to go over how to setup LiveView, their [docs](https://hexdocs.pm/
 
 To get a better understanding of how this is implemented the relevant files to review are [example_workflow.json](priv/state_machines/example_workflow.json), [views/workflow.ex](lib/states_language_live_view_web/views/workflow.ex) and [workflows/example_workflow.ex](lib/states_language_live_view/workflows/example_workflow.ex). 
 
-I've tried to provide some decent documentation to explain what's going on in the files listed above.
+I've tried to provide some decent documentation module and function docs to explain what's going on in the files listed above.
 
 ## Follow-up
 
