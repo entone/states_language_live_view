@@ -1,8 +1,11 @@
 defmodule StatesLanguageLiveView.ExampleWorkflow do
   @moduledoc """
-  This is our state machine implementation, it implements the callbacks from the StatesLanguage library. The defstruct also allows us to use this module as the state machine data. The :parent key was populated in our LiveView view, with the pid of the LiveView process. We use this key to send messages back to the LiveView.
+  This is our state machine implementation, it implements the callbacks from the StatesLanguage library. 
+  The defstruct also allows us to use this module as the state machine data. The :parent key was populated in our LiveView view, 
+  with the pid of the LiveView process. We use this key to send messages back to the LiveView.
 
-  The @external_resource module attribute tells mix to watch the JSON file, and recompile our module if the underlying JSON changes.
+  The @external_resource module attribute tells mix to watch the JSON file, 
+  and recompile our module if the underlying JSON changes.
   """
 
   @external_resource "priv/state_machines/example_workflow.json"
@@ -18,13 +21,17 @@ defmodule StatesLanguageLiveView.ExampleWorkflow do
   @doc """
   We're pattern matching on our Resource and the current State. This makes it possible to call the same Resource but behave differently based on the current state. 
 
-  The ignored argument is the Parameters from our JSON state definition, in this case, we're not utlizing any of the JSONPath support, and only working with our data, which you can see is always in a %StatesLanguage{} struct, with our inital data that we started our process with in the :data key. 
+  The ignored argument is the Parameters from our JSON state definition, 
+  in this case we're not utlizing any of the JSONPath support, and only working with our data, 
+  which you can see is always in a %StatesLanguage{} struct, with our inital data that we started our process with in the :data key. 
 
-  You can see the HTML to be rendered in our template variable, and the event to send to our LiveView process. This should correlate to the TransitionEvent in the JSON, or the default of :transition.
+  You can see the HTML to be rendered in our template variable, and the event to send to our LiveView process. 
+  This should correlate to the TransitionEvent in the JSON, or the default of :transition.
 
   We send an update message to our LiveView process, and it takes care of sending the update to our HTML page.
 
-  We aren't going to transtition to the next state until the user clicks the button, so we don't return any additional actions, and we haven't captured any data yet, so we just return the original data.
+  We aren't going to transtition to the next state until the user clicks the button, 
+  so we don't return any additional actions, and we haven't captured any data yet, so we just return the original data.
 
   The rest of the handle_resources behave in a similar way. 
   """
@@ -57,7 +64,8 @@ defmodule StatesLanguageLiveView.ExampleWorkflow do
   end
 
   @doc """
-  In this state we've captured some data we want to persist for the rest of the states to utilize, so we update our data before returning it.
+  In this state we've captured some data we want to persist for the rest of the states to utilize, 
+  so we update our data before returning it.
   """
   @impl true
   def handle_resource(
@@ -98,7 +106,9 @@ defmodule StatesLanguageLiveView.ExampleWorkflow do
   end
 
   @doc """
-  In this state we are simulating reaching out to another API or a database. In the JSON spec we've defined possible errors in our Catch attribute. Depending on the result of the lookup, we send a successatom or one of 2 error atoms. 
+  In this state we are simulating reaching out to another API or a database. 
+  In the JSON spec we've defined possible errors in our Catch attribute. 
+  Depending on the result of the lookup, we send a successatom or one of 2 error atoms. 
   """
   @impl true
   def handle_resource(
@@ -176,9 +186,11 @@ defmodule StatesLanguageLiveView.ExampleWorkflow do
   end
 
   @doc """
-  The handle_call callback is called from our LiveView view, when setting the account id, the key name is passed in as part of the event and converted to an atom here.
+  The handle_call callback is called from our LiveView view, when setting the account id, 
+  the key name is passed in as part of the event and converted to an atom here.
 
-  We reply to the call with :ok, but also move onto the next state, as we've captured our account id for lookup now.
+  We reply to the call with :ok, but also move onto the next state, 
+  as we've captured our account id for lookup now.
   """
   @impl true
   def handle_call({:set_value, key, value}, from, _state, sl) do
