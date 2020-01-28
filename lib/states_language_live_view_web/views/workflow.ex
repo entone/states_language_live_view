@@ -30,7 +30,6 @@ defmodule StatesLanguageLiveViewWeb.Workflow do
       if connected?(socket) do
         Logger.info("Starting Example Workflow...")
         ExampleWorkflow.start_link(%ExampleWorkflow{parent: self()})
-        Logger.info("Example Workflow Started")
       else
         {:noop, nil}
       end
